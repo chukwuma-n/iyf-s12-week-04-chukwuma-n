@@ -2,12 +2,14 @@
 // Variables and data types
 const studentName = "Chukwuma Nicodemus Ndukwu";
 const age = 43;
+const birthYear = 1983;
 const isStudent = true;
 const favoriteColors = ["blue", "black", "white"];
 const today = new Date();
 
 console.log(`Name: ${studentName}`);
 console.log(`Age: ${age}`);
+console.log("Birth year:", birthYear)
 console.log(`Is a student: ${isStudent}`);
 console.log(`Favorite colors: ${favoriteColors}`);
 console.log(`Today's date: ${today.toDateString()}`);
