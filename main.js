@@ -218,30 +218,23 @@ console.log(getGrade(62));
 console.log(getGrade(40));
 
 // 3. switch statement
+// 3. switch statement: day numbers 0–6
 function getDayName(dayNumber) {
     switch (dayNumber) {
-        case 1:
-            return "Monday";
-        case 2:
-            return "Tuesday";
-        case 3:
-            return "Wednesday";
-        case 4:
-            return "Thursday";
-        case 5:
-            return "Friday";
-        case 6:
-            return "Saturday";
-        case 7:
-            return "Sunday";
-        default:
-            return "Invalid day";
+        case 0: return "Sunday";
+        case 1: return "Monday";
+        case 2: return "Tuesday";
+        case 3: return "Wednesday";
+        case 4: return "Thursday";
+        case 5: return "Friday";
+        case 6: return "Saturday";
+        default: return "Invalid day";
     }
 }
 
-console.log(getDayName(1));
+console.log(getDayName(0));
+console.log(getDayName(6));
 console.log(getDayName(7));
-console.log(getDayName(8));
 
 // 4. for loop: print numbers from 1 to 10
 for (let number = 1; number <= 10; number++) {
@@ -267,6 +260,21 @@ for (let number = 1; number <= 100; number++) {
     } else {
         console.log(number);
     }
+}
+
+// Print numbers from 1 to 100
+for (let number = 1; number <= 100; number++) {
+    console.log(number);
+}
+
+// Print even numbers from 1 to 50
+for (let number = 2; number <= 50; number += 2) {
+    console.log(number);
+}
+
+// Print a triangle of stars
+for (let row = 1; row <= 5; row++) {
+    console.log("*".repeat(row));
 }
 
 
@@ -311,6 +319,33 @@ console.log(`Does the list contain Phone? ${products.includes("Phone")}`);
 const scores = [45, 90, 65, 30, 80];
 scores.sort((a, b) => a - b);
 console.log(`Sorted scores: ${scores}`);
+
+// Add an item at the beginning
+products.unshift("Tablet");
+console.log("After unshift:", products);
+
+// Remove the first item
+const firstRemovedProduct = products.shift();
+console.log("Removed first product:", firstRemovedProduct);
+
+// Double each number using map()
+const numbers = [2, 4, 6, 8, 10];
+const doubledNumbers = numbers.map(number => number * 2);
+console.log("Doubled numbers:", doubledNumbers);
+
+// Filter negative numbers
+const values = [-5, 3, -2, 8, 10, -1];
+const positiveValues = values.filter(number => number >= 0);
+console.log("Non-negative numbers:", positiveValues);
+
+// Find the first number greater than 10
+const firstAboveTen = [4, 8, 12, 15, 20].find(number => number > 10);
+console.log("First number above 10:", firstAboveTen);
+
+// Calculate the product of all numbers
+const productOfNumbers = [2, 3, 4, 5].reduce(
+    (total, number) => total * number,1);
+console.log("Product of numbers:", productOfNumbers);
 
 
 console.log("===== TASK 8.2: OBJECTS =====");
@@ -367,28 +402,59 @@ console.log(Object.values(student));
 
 console.log("===== TASK 8.3: ARRAYS OF OBJECTS =====");
 
+
 const students = [
-    { name: "Alice", score: 92 },
-    { name: "Brian", score: 76 },
-    { name: "Charlie", score: 85 }
+    { name: "Helen", age: 20, grade: 92, major: "Computer Science" },
+    { name: "Joe", age: 22, grade: 76, major: "Business" },
+    { name: "Michael", age: 21, grade: 85, major: "Computer Science" },
+    { name: "Florence", age: 23, grade: 58, major: "Mathematics" },
+    { name: "Monica", age: 20, grade: 95, major: "Computer Science" }
 ];
 
-// Display all students
-students.forEach(student => {
-    console.log(`${student.name}: ${student.score}`);
-});
+// 1. Get all student names
+console.log("Names:", students.map(student => student.name));
 
-// Find a student
-const foundStudent = students.find(student => student.name === "Alice");
-console.log("Found student:", foundStudent);
+// 2. Students with grades above 80
+console.log(
+    "Grades above 80:",
+    students.filter(student => student.grade > 80)
+);
 
-// Filter students with scores of 80 or above
-const highScorers = students.filter(student => student.score >= 80);
-console.log("Students scoring 80 or above:", highScorers);
+// 3. Find Michael
+console.log(
+    "Michael:",
+    students.find(student => student.name === "Michael")
+);
 
-// Get only student names using map()
-const studentNames = students.map(student => student.name);
-console.log("Student names:", studentNames);
+// 4. Calculate average grade
+const averageGrade = students.reduce(
+    (total, student) => total + student.grade, 0
+) / students.length;
+console.log("Average grade:", averageGrade.toFixed(2));
+
+// 5. Find Computer Science majors
+console.log(
+    "Computer Science majors:",
+    students.filter(student => student.major === "Computer Science")
+);
+
+// 6. Sort students from highest to lowest grade
+const sortedStudents = [...students].sort(
+    (a, b) => b.grade - a.grade
+);
+console.log("Sorted by grade:", sortedStudents);
+
+// 7. Does any student have a grade above 90?
+console.log(
+    "Any grade above 90?",
+    students.some(student => student.grade > 90)
+);
+
+// 8. Are all students passing (grade >= 60)?
+console.log(
+    "All students passing?",
+    students.every(student => student.grade >= 60)
+);
 
 
 console.log("===== TASK 8.4: JSON =====");
@@ -414,6 +480,36 @@ console.log("In stock:", parsedProduct.inStock);
 const formattedJSON = JSON.stringify(product, null, 2);
 console.log("Formatted JSON:");
 console.log(formattedJSON);
+
+
+console.log("===== POSTS JSON EXERCISE =====");
+
+const postsJson = `[
+    {"title":"Week 4 recap","published":true,"likes":30},
+    {"title":"Learning JavaScript","published":false,"likes":50},
+    {"title":"Arrays and objects","published":true,"likes":45},
+    {"title":"My first project","published":true,"likes":20}
+]`;
+
+// Parse JSON text into a JavaScript array
+const posts = JSON.parse(postsJson);
+
+// Keep only published posts
+const publishedPosts = posts.filter(post => post.published);
+
+// Sort published posts by likes, highest first
+publishedPosts.sort((a, b) => b.likes - a.likes);
+
+// Create formatted strings
+const postSummaries = publishedPosts.map(
+    post => `${post.title} (${post.likes} likes)`
+);
+console.log("Post summaries:", postSummaries);
+
+// Convert the filtered posts back into JSON text
+const publishedPostsJson = JSON.stringify(publishedPosts, null, 2);
+console.log("Published posts JSON:");
+console.log(publishedPostsJson);
 
 
 console.log("===== CALCULATOR =====");
