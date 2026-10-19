@@ -34,35 +34,33 @@ This repository contains my Week 4 JavaScript practice for the IYF Weekend Acade
 
 ## How to Run
 
-Install Node.js, clone or download this repository, and open the project folder in a terminal.
+Open the project folder in Visual Studio Code. Open the terminal by clicking **Terminal → New Terminal**.
 
-Run the main practice file:
+To run the main JavaScript exercises, type:
 
 ```bash
 node main.js
 ```
 
-Run the calculator:
+To run the calculator, type:
 
 ```bash
 node calculator.js
 ```
 
-Run the grade tracker:
+To run the grade tracker, type:
 
 ```bash
 node grade-tracker.js
 ```
 
-Run a daily challenge:
+To run the FizzBuzz challenge, type:
 
 ```bash
 node daily-challenges/fizzbuzz.js
 ```
 
-You can replace `fizzbuzz.js` with another daily challenge filename.
-
-To view the HTML page, open `index.html` in a browser or use the Live Server extension in Visual Studio Code.
+Each command runs a different JavaScript file. Make sure you run the command from your project folder.
 
 ## Technologies Used
 
